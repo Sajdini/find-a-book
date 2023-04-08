@@ -1,9 +1,7 @@
 .app_container {
   width: 100%;
   max-width: 100rem;
-  background-color: var(--dark-green);
   margin: 0 auto;
   padding: 0.5rem 1rem;
-  border: 3px solid var(--dim-gray);
   border-radius: 8px;
 }
