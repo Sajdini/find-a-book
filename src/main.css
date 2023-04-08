@@ -29,14 +29,14 @@ p {
   margin-bottom: 1rem;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5,
 p {
   user-select: none;
-}
+} */
 
 /* Tablet */
 @media (min-width: 29.9em) {

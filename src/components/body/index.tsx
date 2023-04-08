@@ -3,7 +3,6 @@ import { BookList, keysArray } from "../../App";
 import NoResults from "./NoResults";
 import ListHead from "./ListHead";
 import ListBody from "./ListBody";
-import Row from "./ListBody";
 
 interface P {
   list: BookList[];

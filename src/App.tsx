@@ -28,12 +28,29 @@ function App() {
 
   const onSearch = useMemo(() => {
     if (!debouncedSearchValue[0]) return listofbooks;
-    return listofbooks.filter((book) =>
-      Object.values(book)
-        .join(" ")
-        .toLowerCase()
-        .includes(searchValue.toLowerCase())
-    );
+    const regex = new RegExp(searchValue, "gi");
+    return listofbooks
+      .map((book) => {
+        const title = book.title.replace(
+          regex,
+          (match) => `<span class="highlight">${match}</span>`
+        );
+        const author = book.author.replace(
+          regex,
+          (match) => `<span class="highlight">${match}</span>`
+        );
+        const genre = book.genre.replace(
+          regex,
+          (match) => `<span class="highlight">${match}</span>`
+        );
+        return { ...book, title, author, genre };
+      })
+      .filter((book) =>
+        Object.values(book)
+          .join(" ")
+          .toLowerCase()
+          .includes(searchValue.toLowerCase())
+      );
   }, [listofbooks, debouncedSearchValue]);
 
   return (

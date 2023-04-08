@@ -1,4 +1,3 @@
-import { BookList } from "../../App";
 
 interface P {
   number: number;
@@ -13,13 +12,13 @@ const Row = ({ number, author, title, genre }: P) => {
         <p>{number + 1}</p>
       </div>
       <div>
-        <p>{author}</p>
+        <p dangerouslySetInnerHTML={{ __html: author }}></p>
       </div>
       <div>
-        <p>{title}</p>
+        <p dangerouslySetInnerHTML={{ __html: title }}></p>
       </div>
       <div>
-        <p>{genre}</p>
+        <p dangerouslySetInnerHTML={{ __html: genre }}></p>
       </div>
     </div>
   );
