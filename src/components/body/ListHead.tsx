@@ -1,18 +1,18 @@
-import { keysArray } from "../../App";
+import { BookList, keysArray } from "../../helpers";
 interface P {
-  sortedCategory: string;
+  sortedCategory: keyof BookList;
 }
 const ListHead = ({ sortedCategory }: P) => {
   return (
     <div className=" list--item list--item__header">
-      <div>
+      <div className="list--item__column">
         <p>No#</p>
       </div>
       {keysArray.map((key) => (
-        <div>
+        <div className="list--item__column">
           <p
             className={
-              sortedCategory === key ? "list--item__header--active" : ""
+              sortedCategory === key ? "list--item__column--active" : ""
             }
           >
             {key}

@@ -1,7 +1,6 @@
-.app_container {
+.app--container {
   width: 100%;
   max-width: 100rem;
   margin: 0 auto;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
 }

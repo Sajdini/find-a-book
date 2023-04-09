@@ -1,5 +1,5 @@
 import "./List.css";
-import { BookList, keysArray } from "../../App";
+import { BookList } from "../../helpers";
 import NoResults from "./NoResults";
 import ListHead from "./ListHead";
 import ListBody from "./ListBody";
@@ -13,17 +13,12 @@ const List = ({ list, sortedCategory }: P) => {
     <div className="list">
       <ListHead sortedCategory={sortedCategory} />
 
-      {list.length === 0 ? (
-        <NoResults />
-      ) : (
-        list.map(({ author, title, genre }, index) => (
-          <ListBody
-            author={author}
-            title={title}
-            genre={genre}
-            number={index}
-          />
+      {list.length > 0 ? (
+        list.map((book, index) => (
+          <ListBody key={index} book={book} number={index} />
         ))
+      ) : (
+        <NoResults />
       )}
     </div>
   );

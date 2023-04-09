@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { BookList, keysArray } from "../../App";
+import { BookList, keysArray } from "../../helpers";
 import { IoMdArrowDropdown, IoMdClose } from "react-icons/io";
 import "./Header.css";
 
 interface P {
   onSort: (e: keyof BookList) => void;
-  sortCriteria: keyof BookList;
+  sortValue: keyof BookList;
 }
 
-const Sorter = ({ onSort, sortCriteria }: P) => {
+const Sorter = ({ onSort, sortValue }: P) => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const Sorter = ({ onSort, sortCriteria }: P) => {
         className="dropdown--button"
         onClick={() => setDropDownOpen((isOpen) => !isOpen)}
       >
-        <p>Sorted by {sortCriteria}</p>
+        <p>Sort by {sortValue}</p>
         {!dropDownOpen ? <IoMdArrowDropdown /> : <IoMdClose />}
       </div>
       <div

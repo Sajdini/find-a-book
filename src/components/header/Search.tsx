@@ -5,13 +5,13 @@ interface P {
 }
 const Search = ({ searchValue, onSearch }: P) => {
   return (
-    <div className="search--container">
+    <div className="search">
       <input
         type="text"
         value={searchValue}
         onChange={(e) => onSearch(e.target.value)}
         placeholder="Search..."
-        className="input"
+        className="search--input"
       />
       {!searchValue && <IoMdSearch className="search--icon" />}
     </div>

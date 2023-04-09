@@ -2,24 +2,9 @@ import { useMemo, useState } from "react";
 import Header from "./components/header";
 import { useDebounce } from "use-debounce";
 import listofbooks from "./assets/listofbooks.json";
-import "./App.css";
 import List from "./components/body";
-
-export interface BookList {
-  author: string;
-  title: string;
-  genre: string;
-}
-
-const sortObjectsByKey = (objects: BookList[], key: keyof BookList) => {
-  return objects.sort((a, b) =>
-    a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0
-  );
-};
-
-export const keysArray: Array<keyof BookList> = Object.keys(
-  listofbooks[0]
-) as Array<keyof BookList>;
+import { sortObjectsByKey, BookList } from "./helpers";
+import "./App.css";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -54,18 +39,18 @@ function App() {
   }, [listofbooks, debouncedSearchValue]);
 
   return (
-    <div className="app_container">
+    <div className="app--container">
       <Header
         onSearch={setSearchValue}
         searchValue={searchValue}
         onSort={setSortCriteria}
-        sortCriteria={sortCriteria}
+        sortValue={sortCriteria}
       />
       <List
         list={
           !debouncedSearchValue[0]
             ? sortObjectsByKey(listofbooks, sortCriteria)
-            : onSearch
+            : sortObjectsByKey(onSearch, sortCriteria)
         }
         sortedCategory={sortCriteria}
       />
